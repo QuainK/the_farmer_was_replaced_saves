@@ -26,6 +26,9 @@ def clear_gently():
         for j in range(get_world_size()):
             if can_harvest():
                 harvest()
+            # 坏南瓜通过耕地移除
+            if get_entity_type() == Entities.Dead_Pumpkin:
+                till()
             move(North)
         move(East)
 

@@ -15,7 +15,7 @@ def plant_all():
             if get_entity_type() == None:
                 if num_items(Items.Carrot) > 0:
                     plant(Entities.Pumpkin)
-            utils.water()
+            # utils.water()
             # Z字形扫描
             if j >= get_world_size() - 1:
                 break
@@ -35,7 +35,7 @@ def scan_bad():
                 bad_list.append([get_pos_x(), get_pos_y()])
                 if num_items(Items.Carrot) > 0:
                     plant(Entities.Pumpkin)
-            utils.water()
+            # utils.water()
             # Z字形扫描
             if j >= get_world_size() - 1:
                 break
@@ -70,7 +70,7 @@ def handle_bad():
             # 这里用一个None标记，代表当前坐标已经是好南瓜了，可以跳过，这样更加稳健
             else:
                 bad_list[index] = None
-            utils.water()
+            # utils.water()
         # 翻滚动作是为了等待下一波遍历，或者是等最后一个坏南瓜成熟
         do_a_flip()
         if all_ok:
