@@ -10,7 +10,7 @@ def line():
         if get_ground_type() != Grounds.Soil:
             till()
         plant(Entities.Carrot)
-        utils.water()
+        # utils.water()
         # Z字形扫描
         utils.z_scan()
 

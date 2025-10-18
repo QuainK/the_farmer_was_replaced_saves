@@ -20,14 +20,19 @@ def sort_all():
         for j in range(get_world_size()):
             # 每次移到首位
             utils.move_to(get_pos_x(), 0)
+            # 如果没发生交换，说明已排好序，可以直接跳过循环
+            finished = True
             # 一直移动，直到已排好的前面停下
             while get_pos_y() < get_world_size() - 1 - j:
                 # 前面比后面大就交换
                 current_num = measure()
                 next_num = measure(North)
                 if current_num > next_num:
+                    finished = False
                     swap(North)
                 move(North)
+            if finished:
+                break
         move(East)
 
     utils.move_origin()
@@ -36,14 +41,19 @@ def sort_all():
         for j in range(get_world_size()):
             # 每次移到首位
             utils.move_to(0, get_pos_y())
+            # 如果没发生交换，说明已排好序，可以直接跳过循环
+            finished = True
             # 一直移动，直到已排好的前面停下
             while get_pos_x() < get_world_size() - 1 - j:
                 # 前面比后面大就交换
                 current_num = measure()
                 next_num = measure(East)
                 if current_num > next_num:
+                    finished = False
                     swap(East)
                 move(East)
+            if finished:
+                break
         move(North)
 
 
@@ -56,6 +66,7 @@ def main():
         sort_all()
         if can_harvest():
             harvest()
+        utils.move_origin()
 
 
 if __name__ == '__main__':
