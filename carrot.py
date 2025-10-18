@@ -1,8 +1,10 @@
+import utils
 from __builtins__ import *
 
 
 def main():
-    clear()
+    # 清空农场
+    utils.clear_gently()
     while True:
         for i in range(get_world_size()):
             for j in range(get_world_size()):

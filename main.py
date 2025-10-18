@@ -1,9 +1,10 @@
+import utils
 from __builtins__ import *
 
 
 def main():
     # 清空农场
-    clear()
+    utils.clear_gently()
 
     # 种植和收获
     while True:
