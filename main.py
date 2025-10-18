@@ -7,11 +7,13 @@ from __builtins__ import *
 
 plant_list = [
     grass.line,
+    grass.line,
     tree.line,
     carrot.line,
     carrot.line,
     carrot.line,
-    sunflower.line
+    sunflower.line,
+    sunflower.line,
 ]
 
 
