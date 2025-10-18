@@ -2,12 +2,9 @@ import utils
 from __builtins__ import *
 
 
-def check_move(direction=None):
-    if direction == None or not move(direction):
-        change_hat(Hats.Purple_Hat)
-
-
 def main():
+    change_hat(Hats.Purple_Hat)
+    utils.clear_gently(True)
     # 哈密顿回路扫描
     while True:
         change_hat(Hats.Purple_Hat)

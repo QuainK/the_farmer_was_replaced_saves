@@ -16,8 +16,8 @@ def line():
 
 
 def main():
-    # 清空农场
-    utils.clear_gently(True)
+    # utils.clear_gently()
+    utils.move_origin()
     while True:
         for i in range(get_world_size()):
             line()

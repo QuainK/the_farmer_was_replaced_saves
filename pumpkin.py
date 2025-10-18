@@ -76,7 +76,6 @@ def handle_bad():
 def main():
     global bad_list
     bad_list = []
-    # 清空农场
     utils.clear_gently(True)
     # 种植——检测——处理
     while True:
