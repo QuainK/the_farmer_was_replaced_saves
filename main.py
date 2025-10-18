@@ -9,7 +9,7 @@ plant_list = [
     grass.line,
     grass.line,
     tree.line,
-    carrot.line,
+    tree.line,
     carrot.line,
     carrot.line,
     sunflower.line,

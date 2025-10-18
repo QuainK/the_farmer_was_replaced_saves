@@ -11,7 +11,7 @@ def line():
             if get_ground_type() != Grounds.Soil:
                 till()
             plant(Entities.Tree)
-            utils.water()
+            # utils.water()
         else:
             if get_ground_type() != Grounds.Grassland:
                 till()
