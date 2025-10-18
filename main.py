@@ -5,16 +5,31 @@ import tree
 import utils
 from __builtins__ import *
 
-plant_list = [
-    grass.line,
-    grass.line,
-    tree.line,
-    tree.line,
-    carrot.line,
-    carrot.line,
-    sunflower.line,
-    sunflower.line,
-]
+
+# 按列种植不同作物
+def plant_by_line():
+    plant_list = [
+        grass.line,
+        tree.line,
+        carrot.line,
+        sunflower.line,
+    ]
+
+    for i in range(get_world_size()):
+        if i >= len(plant_list):
+            break
+        plant_list[i % len(plant_list)]()
+        move(East)
+
+
+# 种植基础作物，干草，木头，能量
+def plant_basic_items():
+    for i in range(get_world_size()):
+        if num_items(Items.Power) <= 1000:
+            sunflower.line()
+        else:
+            tree.line()
+        move(East)
 
 
 def main():
@@ -23,9 +38,8 @@ def main():
 
     # 种植和收获
     while True:
-        for i in range(get_world_size()):
-            plant_list[i]()
-            move(East)
+        # plant_by_line()
+        plant_basic_items()
 
 
 if __name__ == '__main__':
