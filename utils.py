@@ -28,3 +28,10 @@ def clear_gently():
                 harvest()
             move(North)
         move(East)
+
+
+# 浇水
+def water():
+    # 一罐水0.25，所以等当前田地含水量不高于一罐水时就浇水
+    if num_items(Items.Water) > 0 and get_water() <= .75:
+        use_item(Items.Water)
