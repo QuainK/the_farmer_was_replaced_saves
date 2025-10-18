@@ -9,7 +9,8 @@ def line():
             harvest()
         if get_ground_type() != Grounds.Grassland:
             till()
-        move(North)
+        # Z字形扫描
+        utils.z_scan()
 
 
 def main():

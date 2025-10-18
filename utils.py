@@ -19,8 +19,18 @@ def move_origin():
     move_to(0, 0)
 
 
+# Z字形扫描
+def z_scan():
+    if get_pos_x() % 2 == 0:
+        if get_pos_y() < get_world_size() - 1:
+            move(North)
+    else:
+        if get_pos_y() > 0:
+            move(South)
+
+
 # 优雅清空农场
-def clear_gently():
+def clear_gently(force_soil=False):
     move_origin()
     for i in range(get_world_size()):
         for j in range(get_world_size()):
@@ -29,7 +39,11 @@ def clear_gently():
             # 坏南瓜通过耕地移除
             if get_entity_type() == Entities.Dead_Pumpkin:
                 till()
-            move(North)
+            # 是否强制耕地成土地
+            if force_soil and get_ground_type() != Grounds.Soil:
+                till()
+            # Z字形扫描
+            z_scan()
         move(East)
 
 

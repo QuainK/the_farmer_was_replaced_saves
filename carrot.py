@@ -11,7 +11,8 @@ def line():
             till()
         plant(Entities.Carrot)
         utils.water()
-        move(North)
+        # Z字形扫描
+        utils.z_scan()
 
 
 def main():

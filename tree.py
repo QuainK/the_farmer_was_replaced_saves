@@ -5,10 +5,9 @@ from __builtins__ import *
 # 一列
 def line():
     for j in range(get_world_size()):
-        i = get_pos_x()
         if can_harvest():
             harvest()
-        if (i + j) % 2 == 0:
+        if (get_pos_x() + get_pos_y()) % 2 == 0:
             if get_ground_type() != Grounds.Soil:
                 till()
             plant(Entities.Tree)
@@ -16,7 +15,8 @@ def line():
         else:
             if get_ground_type() != Grounds.Grassland:
                 till()
-        move(North)
+        # Z字形扫描
+        utils.z_scan()
 
 
 def main():

@@ -17,12 +17,7 @@ def plant_all():
                     plant(Entities.Pumpkin)
             # utils.water()
             # Z字形扫描
-            if j >= get_world_size() - 1:
-                break
-            if i % 2 == 0:
-                move(North)
-            else:
-                move(South)
+            utils.z_scan()
         move(East)
 
 
@@ -37,12 +32,7 @@ def scan_bad():
                     plant(Entities.Pumpkin)
             # utils.water()
             # Z字形扫描
-            if j >= get_world_size() - 1:
-                break
-            if i % 2 == 0:
-                move(North)
-            else:
-                move(South)
+            utils.z_scan()
         move(East)
 
 
@@ -88,7 +78,6 @@ def main():
     bad_list = []
     # 清空农场
     utils.clear_gently()
-    clear()
     # 种植——检测——处理
     while True:
         change_hat(Hats.Purple_Hat)
