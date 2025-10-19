@@ -29,6 +29,12 @@ def z_scan():
             move(South)
 
 
+# 扫描单列
+def scan_line():
+    if get_pos_y() < get_world_size() - 1:
+        move(North)
+
+
 # 优雅清空农场
 def clear_gently(force_soil=False):
     move_origin()

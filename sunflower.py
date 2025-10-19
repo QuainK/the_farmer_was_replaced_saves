@@ -11,7 +11,7 @@ def line():
             till()
         plant(Entities.Sunflower)
         # utils.water()
-        move(North)
+        utils.scan_line()
 
 
 def main():

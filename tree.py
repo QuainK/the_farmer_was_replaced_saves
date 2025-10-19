@@ -15,7 +15,7 @@ def line():
         else:
             if get_ground_type() != Grounds.Grassland:
                 till()
-        move(North)
+        utils.scan_line()
 
 
 def main():

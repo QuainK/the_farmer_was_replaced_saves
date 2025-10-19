@@ -6,13 +6,6 @@ import utils
 from __builtins__ import *
 
 
-def func():
-    for _ in range(get_world_size()):
-        if can_harvest():
-            harvest()
-        move(North)
-
-
 def main():
     plant_list = [
         grass.line,
@@ -31,11 +24,8 @@ def main():
         func = plant_list[index]
 
         if num_drones() < max_drones():
-            if not spawn_drone(func):
-                func()
-        else:
-            func()
-        move(East)
+            spawn_drone(func)
+            move(East)
 
 
 if __name__ == '__main__':
