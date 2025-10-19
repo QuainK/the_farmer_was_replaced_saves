@@ -16,8 +16,7 @@ def plant_all():
                 if num_items(Items.Carrot) > 0:
                     plant(Entities.Pumpkin)
             # utils.water()
-            # Z字形扫描
-            utils.z_scan()
+            move(North)
         move(East)
 
 
@@ -31,8 +30,7 @@ def scan_bad():
                 if num_items(Items.Carrot) > 0:
                     plant(Entities.Pumpkin)
             # utils.water()
-            # Z字形扫描
-            utils.z_scan()
+            move(North)
         move(East)
 
 

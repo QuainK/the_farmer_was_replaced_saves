@@ -2,7 +2,6 @@ import carrot
 import grass
 import sunflower
 import tree
-import utils
 from __builtins__ import *
 
 
@@ -33,10 +32,7 @@ def plant_basic_items():
 
 
 def main():
-    # 清空农场
-    utils.clear_gently()
-
-    # 种植和收获
+    clear()
     while True:
         plant_by_line()
         # plant_basic_items()

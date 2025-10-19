@@ -22,8 +22,7 @@ def main():
             for j in range(get_world_size()):
                 if can_harvest():
                     harvest()
-                # Z字形扫描
-                utils.z_scan()
+                move(North)
             move(East)
 
 

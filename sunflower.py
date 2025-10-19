@@ -11,8 +11,7 @@ def line():
             till()
         plant(Entities.Sunflower)
         # utils.water()
-        # Z字形扫描
-        utils.z_scan()
+        move(North)
 
 
 def main():

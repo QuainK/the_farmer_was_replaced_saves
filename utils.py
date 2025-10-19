@@ -42,8 +42,7 @@ def clear_gently(force_soil=False):
             # 是否强制耕地成土地
             if force_soil and get_ground_type() != Grounds.Soil:
                 till()
-            # Z字形扫描
-            z_scan()
+            move(North)
         move(East)
 
 

@@ -4,7 +4,7 @@ from __builtins__ import *
 
 # 一列
 def line():
-    for j in range(get_world_size()):
+    for _ in range(get_world_size()):
         if can_harvest():
             harvest()
         if (get_pos_x() + get_pos_y()) % 2 == 0:
@@ -15,8 +15,7 @@ def line():
         else:
             if get_ground_type() != Grounds.Grassland:
                 till()
-        # Z字形扫描
-        utils.z_scan()
+        move(North)
 
 
 def main():
