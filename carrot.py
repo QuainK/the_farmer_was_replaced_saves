@@ -16,7 +16,6 @@ def line():
 
 
 def main():
-    # utils.clear_gently()
     utils.move_origin()
     while True:
         for i in range(get_world_size()):

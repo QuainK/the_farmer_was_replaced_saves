@@ -58,7 +58,7 @@ def sort_all():
 
 
 def main():
-    utils.clear_gently()
+    clear()
     # 种植——先列后行，冒泡排序——收获
     while True:
         plant_all()

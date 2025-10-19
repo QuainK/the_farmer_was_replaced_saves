@@ -38,8 +38,8 @@ def main():
 
     # 种植和收获
     while True:
-        # plant_by_line()
-        plant_basic_items()
+        plant_by_line()
+        # plant_basic_items()
 
 
 if __name__ == '__main__':

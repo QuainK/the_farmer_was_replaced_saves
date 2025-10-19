@@ -4,7 +4,7 @@ from __builtins__ import *
 
 def main():
     change_hat(Hats.Purple_Hat)
-    utils.clear_gently(True)
+    clear()
     # 哈密顿回路扫描
     while True:
         change_hat(Hats.Purple_Hat)

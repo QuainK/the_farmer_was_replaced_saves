@@ -76,7 +76,7 @@ def handle_bad():
 def main():
     global bad_list
     bad_list = []
-    utils.clear_gently(True)
+    clear()
     # 种植——检测——处理
     while True:
         change_hat(Hats.Purple_Hat)
