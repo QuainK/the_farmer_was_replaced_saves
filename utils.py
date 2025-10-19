@@ -32,6 +32,7 @@ def z_scan():
 # 扫描单列
 def scan_line():
     if get_pos_y() < get_world_size() - 1:
+        water()
         move(North)
 
 

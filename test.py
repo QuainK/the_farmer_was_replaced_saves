@@ -1,19 +1,13 @@
 from __builtins__ import *
 
 
-def harvest_column():
-    for _ in range(get_world_size()):
-        harvest()
-        move(North)
-
-
 def main():
     clear()
+    # set_world_size(32)
+    # set_execution_speed(1)
+    # print(num_drones(), max_drones())
     while True:
-        if spawn_drone(harvest_column):
-            move(East)
-            harvest_column()
-            move(East)
+        move(North)
 
 
 if __name__ == '__main__':

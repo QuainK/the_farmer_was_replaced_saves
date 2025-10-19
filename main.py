@@ -2,11 +2,11 @@ import carrot
 import grass
 import sunflower
 import tree
+import utils
 from __builtins__ import *
 
 
-# 按列种植不同作物
-def plant_by_line():
+def main():
     plant_list = [
         grass.line,
         tree.line,
@@ -14,28 +14,18 @@ def plant_by_line():
         sunflower.line,
     ]
 
-    for i in range(get_world_size()):
-        if i >= len(plant_list):
-            break
-        plant_list[i % len(plant_list)]()
-        move(East)
+    utils.move_origin()
 
-
-# 种植基础作物，干草，木头，能量
-def plant_basic_items():
-    for i in range(get_world_size()):
-        if num_items(Items.Power) <= 1000:
-            sunflower.line()
-        else:
-            tree.line()
-        move(East)
-
-
-def main():
-    clear()
     while True:
-        plant_by_line()
-        # plant_basic_items()
+        if len(plant_list) > 1:
+            index = get_pos_x() % len(plant_list)
+        else:
+            index = 0
+        func = plant_list[index]
+
+        if num_drones() < max_drones():
+            spawn_drone(func)
+            move(East)
 
 
 if __name__ == '__main__':
