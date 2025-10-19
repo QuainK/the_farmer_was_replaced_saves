@@ -1,15 +1,19 @@
-import utils
 from __builtins__ import *
 
 
+def harvest_column():
+    for _ in range(get_world_size()):
+        harvest()
+        move(North)
+
+
 def main():
-    utils.move_origin()
-    # change_hat(Hats.Purple_Hat)
-    # move(North)
-    # move(North)
-    # move(North)
-    # move(East)
-    harvest()
+    clear()
+    while True:
+        if spawn_drone(harvest_column):
+            move(East)
+            harvest_column()
+            move(East)
 
 
 if __name__ == '__main__':
