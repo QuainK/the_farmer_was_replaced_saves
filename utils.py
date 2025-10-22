@@ -95,5 +95,7 @@ def multiple(func):
         else:
             # 子无人机派完了，主无人机亲自执行，此时线程数最大
             func()
+            move_to(get_pos_x(), 0)
         # 一列一列派出子无人机
         scan_row()
+    move_origin()

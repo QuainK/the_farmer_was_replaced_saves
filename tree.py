@@ -27,7 +27,6 @@ def main():
     utils.move_origin()
     while True:
         utils.multiple(column)
-        utils.move_origin()
 
 
 if __name__ == '__main__':
