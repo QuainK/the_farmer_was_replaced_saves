@@ -17,7 +17,7 @@ def one():
             use_item(Items.Fertilizer)
 
 
-# 收获和种植一列
+# 收获和种植单列
 def plant_column():
     utils.move_to(get_pos_x(), 0)
     for _ in range(get_world_size()):
@@ -25,7 +25,7 @@ def plant_column():
         utils.scan_column()
 
 
-# 感染一列
+# 感染单列
 def weird_column():
     # 十字形错位布局
     for _ in range(get_world_size()):

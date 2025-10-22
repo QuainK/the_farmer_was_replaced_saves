@@ -5,21 +5,6 @@ from __builtins__ import *
 bad_list = []
 
 
-# 种植整个农场
-def plant_all():
-    global bad_list
-    for i in range(get_world_size()):
-        for j in range(get_world_size()):
-            if get_ground_type() != Grounds.Soil:
-                till()
-            if get_entity_type() == None:
-                if num_items(Items.Carrot) > 0:
-                    plant(Entities.Pumpkin)
-            # utils.water()
-            move(North)
-        move(East)
-
-
 # 扫描坏南瓜记录到列表里
 def scan_bad():
     global bad_list
@@ -71,18 +56,38 @@ def handle_bad():
     utils.move_origin()
 
 
+# 种植单格
+def plant_one():
+    if get_ground_type() != Grounds.Soil:
+        till()
+    if get_entity_type() == None:
+        if num_items(Items.Pumpkin) > 0:
+            plant(Entities.Pumpkin)
+    # utils.water()
+
+
+# 种植单列
+def plant_column():
+    for _ in range(get_world_size()):
+        plant_one()
+        utils.scan_column()
+
+
 def main():
     global bad_list
     bad_list = []
-    clear()
+    utils.clear_gently(True)
     # 种植——检测——处理
     while True:
+        # 种植整场
         change_hat(Hats.Purple_Hat)
-        plant_all()
+        utils.multiple(plant_column)
 
+        # 检测整场坏南瓜
         change_hat(Hats.Green_Hat)
         scan_bad()
 
+        # 处理整场坏南瓜
         change_hat(Hats.Brown_Hat)
         handle_bad()
 

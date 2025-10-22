@@ -10,7 +10,7 @@ def one():
         till()
 
 
-# 一列
+# 单列
 def column():
     utils.move_to(get_pos_x(), 0)
     for _ in range(get_world_size()):
