@@ -2,22 +2,28 @@ import utils
 from __builtins__ import *
 
 
+# 单格
+def one():
+    if can_harvest():
+        harvest()
+    if get_ground_type() != Grounds.Grassland:
+        till()
+
+
 # 一列
-def line():
-    for j in range(get_world_size()):
-        if can_harvest():
-            harvest()
-        if get_ground_type() != Grounds.Grassland:
-            till()
-        utils.scan_line()
+def column():
+    utils.move_to(get_pos_x(), 0)
+    for _ in range(get_world_size()):
+        one()
+        utils.scan_column()
 
 
+# 整场
 def main():
     utils.move_origin()
     while True:
-        for i in range(get_world_size()):
-            line()
-            move(East)
+        utils.multiple(column)
+        utils.move_origin()
 
 
 if __name__ == '__main__':
