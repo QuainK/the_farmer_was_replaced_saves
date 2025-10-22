@@ -75,7 +75,7 @@ def clear_gently(force_soil=False):
 
     move_origin()
     # 多线程收获
-    multiple(harvest_line)
+    multiple_column(harvest_line)
     move_origin()
 
 
@@ -86,8 +86,8 @@ def water():
         use_item(Items.Water)
 
 
-# 多线程无人机
-def multiple(func):
+# 无人机多线程处理列
+def multiple_column(func):
     for _ in range(get_world_size()):
         if num_drones() < max_drones():
             # 能派出子无人机，就让子无人机执行
@@ -98,4 +98,16 @@ def multiple(func):
             move_to(get_pos_x(), 0)
         # 一列一列派出子无人机
         scan_row()
+    move_origin()
+
+
+# 无人机多线程处理行
+def multiple_row(func):
+    for _ in range(get_world_size()):
+        if num_drones() < max_drones():
+            spawn_drone(func)
+        else:
+            func()
+            move_to(0, get_pos_y())
+        scan_column()
     move_origin()

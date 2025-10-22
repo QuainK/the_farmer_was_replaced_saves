@@ -81,7 +81,7 @@ def main():
     while True:
         # 种植整场
         change_hat(Hats.Purple_Hat)
-        utils.multiple(plant_column)
+        utils.multiple_column(plant_column)
 
         # 检测整场坏南瓜
         change_hat(Hats.Green_Hat)

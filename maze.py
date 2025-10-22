@@ -24,7 +24,7 @@ def one():
 def main():
     utils.clear_gently(True)
     while True:
-        utils.multiple(one)
+        utils.multiple_column(one)
 
 
 if __name__ == '__main__':

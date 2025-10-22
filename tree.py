@@ -26,7 +26,7 @@ def column():
 def main():
     utils.move_origin()
     while True:
-        utils.multiple(column)
+        utils.multiple_column(column)
 
 
 if __name__ == '__main__':

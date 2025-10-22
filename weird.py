@@ -43,10 +43,10 @@ def weird_column():
 def main():
     utils.clear_gently(True)
     while True:
-        utils.multiple(plant_column)
+        utils.multiple_column(plant_column)
         # 奇异物质够用，就开始感染作物并收获
         if num_items(Items.Weird_Substance) > weird_limit:
-            utils.multiple(weird_column)
+            utils.multiple_column(weird_column)
 
 
 if __name__ == '__main__':
