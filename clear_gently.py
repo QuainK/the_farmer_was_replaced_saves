@@ -3,7 +3,7 @@ from __builtins__ import *
 
 
 def main():
-    change_hat(Hats.Purple_Hat)
+    change_hat(Hats.Green_Hat)
     utils.clear_gently()
 
 
