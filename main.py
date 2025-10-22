@@ -7,25 +7,19 @@ from __builtins__ import *
 
 
 def main():
+    utils.clear_gently()
+    # 按列混合种植基础作物
     plant_list = [
-        grass.line,
-        tree.line,
-        carrot.line,
-        sunflower.line,
+        grass.column,
+        tree.column,
+        carrot.column,
+        sunflower.column,
     ]
-
-    utils.move_origin()
-
     while True:
-        if len(plant_list) > 1:
-            index = get_pos_x() % len(plant_list)
-        else:
-            index = 0
-        func = plant_list[index]
-
-        if num_drones() < max_drones():
-            spawn_drone(func)
-            move(East)
+        for column_func in plant_list:
+            # 无人机多线程处理列
+            utils.multiple_column(column_func)
+            do_a_flip()
 
 
 if __name__ == '__main__':
