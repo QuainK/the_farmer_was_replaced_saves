@@ -77,6 +77,7 @@ def main():
     global bad_list
     bad_list = []
     utils.clear_gently(True)
+    # 将整个农场作为一个区域，用来种植最大的南瓜
     # 种植——检测——处理
     while True:
         # 种植整场
