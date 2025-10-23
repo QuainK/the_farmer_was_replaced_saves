@@ -60,9 +60,8 @@ def handle_bad():
 def plant_one():
     if get_ground_type() != Grounds.Soil:
         till()
-    if get_entity_type() == None:
-        if num_items(Items.Pumpkin) > 0:
-            plant(Entities.Pumpkin)
+    if num_items(Items.Pumpkin) > 0:
+        plant(Entities.Pumpkin)
     # utils.water()
 
 

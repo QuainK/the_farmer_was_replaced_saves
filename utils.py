@@ -101,15 +101,15 @@ def multiple_column(func):
             # 能派出子无人机，就让子无人机执行
             spawn_drone(func)
             # 只派出子无人机，主无人机不做事，等有空闲子无人机再继续往后派出
-            scan_row()
-            while num_drones() >= max_drones():
-                pass
-        # else:
-        #     # 子无人机派完了，主无人机亲自执行，此时线程数最大
-        #     func()
-        #     move_to(get_pos_x(), 0)
-        # # 一列一列派出子无人机
-        # scan_row()
+            # scan_row()
+            # while num_drones() >= max_drones():
+            #     pass
+        else:
+            # 子无人机派完了，主无人机亲自执行，此时线程数最大
+            func()
+            move_to(get_pos_x(), 0)
+        # 一列一列派出子无人机
+        scan_row()
     move_origin()
 
 
@@ -120,12 +120,12 @@ def multiple_row(func):
         if num_drones() < max_drones():
             spawn_drone(func)
             # 和处理列的同理
-            scan_column()
-            while num_drones() >= max_drones():
-                pass
+            # scan_column()
+            # while num_drones() >= max_drones():
+            #     pass
         # 和处理列的同理
-        # else:
-        #     func()
-        #     move_to(0, get_pos_y())
-        # scan_column()
+        else:
+            func()
+            move_to(0, get_pos_y())
+        scan_column()
     move_origin()
