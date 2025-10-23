@@ -9,8 +9,8 @@ weird_limit = 2000
 def one():
     if can_harvest():
         harvest()
-    plant(Entities.Sunflower)
-    utils.water()
+    if get_ground_type() != Grounds.Grassland:
+        till()
     # 奇异物质不够用了，就开始施肥并收获
     if num_items(Items.Weird_Substance) <= weird_limit:
         if num_items(Items.Fertilizer) > 0:
@@ -33,19 +33,22 @@ def weird_column():
             break
         else:
             if get_pos_x() % 4 == 1 and get_pos_y() % 3 == 1:
-                use_item(Items.Weird_Substance)
+                if num_items(Items.Weird_Substance) > 0:
+                    use_item(Items.Weird_Substance)
             elif get_pos_x() % 4 == 3 and get_pos_y() % 3 == 2:
-                use_item(Items.Weird_Substance)
+                if num_items(Items.Weird_Substance) > 0:
+                    use_item(Items.Weird_Substance)
             utils.scan_column()
 
 
 # 整场
 def main():
-    utils.clear_gently(True)
+    utils.clear_gently()
     while True:
         utils.multiple_column(plant_column)
         # 奇异物质够用，就开始感染作物并收获
-        if num_items(Items.Weird_Substance) > weird_limit:
+        if (num_items(Items.Fertilizer) < num_items(Items.Weird_Substance) or
+                num_items(Items.Weird_Substance) > weird_limit):
             utils.multiple_column(weird_column)
 
 
