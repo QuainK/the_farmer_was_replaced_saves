@@ -19,7 +19,7 @@ def scan_bad():
         move(East)
 
 
-# 处理坏南瓜，重新种植，如果坏南瓜在下次检测时是好的，那就从列表里移除
+# 处理坏南瓜，重新种植，如果坏南瓜在下次检测时是好的，那就在列表里标记
 def handle_bad():
     global bad_list
     # 遍历坏南瓜列表
@@ -48,12 +48,6 @@ def handle_bad():
         do_a_flip()
         if all_ok:
             break
-
-    # 收获，清空列表，回到原点，开始新的一轮种植
-    if can_harvest():
-        harvest()
-        bad_list = []
-    utils.move_origin()
 
 
 # 种植单格
@@ -90,6 +84,12 @@ def main():
         # 处理整场坏南瓜
         change_hat(Hats.Brown_Hat)
         handle_bad()
+
+        # 收获，清空列表，回到原点，开始新的一轮种植
+        if can_harvest():
+            harvest()
+            bad_list = []
+        utils.move_origin()
 
 
 if __name__ == '__main__':
