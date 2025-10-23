@@ -86,28 +86,46 @@ def water():
         use_item(Items.Water)
 
 
+# 无人机多线程开始前
+def pre_multiple():
+    # 等上一波无人机多线程做完
+    while num_drones() > 1:
+        pass
+
+
 # 无人机多线程处理列
 def multiple_column(func):
+    pre_multiple()
     for _ in range(get_world_size()):
         if num_drones() < max_drones():
             # 能派出子无人机，就让子无人机执行
             spawn_drone(func)
-        else:
-            # 子无人机派完了，主无人机亲自执行，此时线程数最大
-            func()
-            move_to(get_pos_x(), 0)
-        # 一列一列派出子无人机
-        scan_row()
+            # 只派出子无人机，主无人机不做事，等有空闲子无人机再继续往后派出
+            scan_row()
+            while num_drones() >= max_drones():
+                pass
+        # else:
+        #     # 子无人机派完了，主无人机亲自执行，此时线程数最大
+        #     func()
+        #     move_to(get_pos_x(), 0)
+        # # 一列一列派出子无人机
+        # scan_row()
     move_origin()
 
 
 # 无人机多线程处理行
 def multiple_row(func):
+    pre_multiple()
     for _ in range(get_world_size()):
         if num_drones() < max_drones():
             spawn_drone(func)
-        else:
-            func()
-            move_to(0, get_pos_y())
-        scan_column()
+            # 和处理列的同理
+            scan_column()
+            while num_drones() >= max_drones():
+                pass
+        # 和处理列的同理
+        # else:
+        #     func()
+        #     move_to(0, get_pos_y())
+        # scan_column()
     move_origin()
